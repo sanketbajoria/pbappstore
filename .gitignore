@@ -8,3 +8,4 @@ scss-lint.log
 .idea
 build
 /bin/
+.vscode
