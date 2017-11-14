@@ -40,7 +40,8 @@
       </div>
 
       <div class="app-content">
-        <h3 ng-repeat-start="category in home.getCategories()">{{category.label}}</h3>
+        <div class="category-label text-primary" ng-repeat-start="category in home.getCategories()">{{category.label}}</div>
+        <div class="category-description">{{category.description}}</div>
         <div ng-repeat-end class="row">
            <div ng-repeat="app in home.getApp(category)" class="col-sm-2">
             <div class="card card-shadow category-widget app">

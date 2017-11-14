@@ -141,12 +141,16 @@ header i.nc-icon-outline {
   img{
     max-height: 48px;
     max-width: 48px;
-    vertical-align: text-top;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
   .card-footer{
     height: 96px;
     max-height: 96px;
     min-height: 96px;
+    position: relative;
   }
   .card-body{
     padding: 10px;
@@ -205,3 +209,14 @@ header i.nc-icon-outline {
 *{
   outline-color: transparent;
 } */
+
+
+.category-label {
+  font-size: 16px;
+  margin-top: 10px;
+}
+.category-description {
+  color: #c0c0c0;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
