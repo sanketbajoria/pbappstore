@@ -102,7 +102,7 @@
               <div class="col-md-12">
                 <div class="detail-section">
                   <h3 class="text-primary">Banner</h3>
-                  <img ng-src="{{app.data.banner_url}}" alt="">
+                  <img ng-src="{{app.data.banner_url}}" class="img-responsive" alt="">
                 </div>
               </div>
             </div>
@@ -113,7 +113,9 @@
                   <h3 class="text-primary">Screenshots</h3>
                   <slick settings="app.imageGallery.settings">
                     <div class="image-gallery-item thumbnail" ng-class="{'active': app.imageGallery.selected === $index}" ng-repeat="i in app.imageGallery.items">
-                      <img class="img-responsive" alt="Image name" ng-src="{{i.imageName}}" ng-click="app.openFullImage($index)"/>
+                      <a id="fb-{{$index}}" alt="Image name" ng-href="{{i.imageName}}" fancyboxable="{type: 'image'}">
+                        <img ng-src="{{i.imageName}}" class="img-responsive"/>
+                      </a>
                     </div>
                   </slick>
                 </div>

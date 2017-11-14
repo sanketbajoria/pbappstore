@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('pb.ds.home').controller('AppDetailController',
-    function ($log, $uibModal, $stateParams, app, Lightbox, AppFactory) {
+    function ($log, $uibModal, $stateParams, app, AppFactory, fancyboxService) {
 
       var _this = this;
 
@@ -67,6 +67,7 @@
 
       _this.openFullImage = function (index) {
         // Lightbox.openModal(_this.screenShots, index);
+        // fancyboxService.
       }
 
 
