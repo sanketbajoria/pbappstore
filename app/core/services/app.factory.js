@@ -33,7 +33,7 @@
             'api_key': AppConstant.api_key
           }
         }).then(function (res) {
-          return res.data.mobile_application_updates;
+          return res.data.mobile_application_update;
         });
       }
 

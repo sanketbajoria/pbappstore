@@ -1,7 +1,27 @@
 <div class="container">
   <div class="row">
       <div class="col-md-12">
-        <img ng-src="app.data.icon_url" />  
+        <img ng-src="{{app.data.icon_url}}" />
+        <h3>{{app.data.name}}</h3>
+        <h4>{{app.data.catchphrase}}</h4> 
+
+         <!-- gallery large image -->
+          <div class="row spacer-bottom-md">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+              <img class="img-responsive thumbnail"  alt="Image name"
+                  ng-src="{{app.imageGallery.selectedImage}}"/>
+            </div>
+          </div>
+  
+          <!-- slick carousel -->
+          <slick settings="app.imageGallery.settings">
+            <div class="image-gallery-item thumbnail" ng-class="{'active': app.imageGallery.selected === $index}"
+                ng-repeat="i in app.imageGallery.items" ng-click="app.imageGallery.click(i, $index)">
+              <img class="img-responsive" alt="Image name" ng-src="{{i.imageName}}"/>
+            </div>
+          </slick>
+
+
       </div>
   </div>
 </div>

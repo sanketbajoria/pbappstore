@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('pb.ds.home').config(function ($stateProvider) {
-    $stateProvider.state('apps.detail', {
+    $stateProvider.state('appDetail', {
       url: '/apps/:appId',
       resolve: {
         app: function (AppFactory, $stateParams) {
@@ -22,7 +22,7 @@
         },
         'content': {
           controller: 'AppDetailController as app',
-          templateUrl: 'modules/app/templates/app.html'
+          templateUrl: 'modules/app/templates/app.detail.html'
         }
       }
     });

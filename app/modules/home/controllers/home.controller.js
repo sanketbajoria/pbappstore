@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('pb.ds.home').controller('HomeController',
-    function ($log, $uibModal, AppFactory) {
+    function ($log, $uibModal, AppFactory, $state) {
 
       var _this = this;
 
@@ -35,6 +35,10 @@
           }
         });
       });
+
+      _this.openApp = function (app) {
+        $state.go('appDetail', { appId: app.id });
+      };
 
 
       _this.categoryChanged = function (category) {

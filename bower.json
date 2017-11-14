@@ -13,7 +13,9 @@
     "ui-router": "0.2.18",
     "pb-design-system": "4.0.0",
     "jquery": "2.2.1",
-    "angular-rating": "^3.1.0"
+    "angular-rating": "^3.1.0",
+    "angular-slick-carousel": "^3.1.7",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {},
   "resolutions": {

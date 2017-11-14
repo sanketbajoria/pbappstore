@@ -53,7 +53,7 @@
         <h3 ng-repeat-start="category in home.getCategories()">{{category.label}}</h3>
         <div ng-repeat-end class="row">
           <div ng-repeat="app in home.getApp(category)" class="col-sm-2">
-            <div class="card card-shadow category-widget app">
+            <div class="card card-shadow category-widget app" ng-click="home.openApp(app)">
               <div class="card-body category-widget-icon">
                 <img ng-src="{{app.icon_url}}"/>
               </div>

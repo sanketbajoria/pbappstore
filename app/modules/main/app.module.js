@@ -5,7 +5,8 @@
   var app = angular.module('app', [
     'pb.core',
     'pb.ds.home',
-    'pb.ds.tables'
+    'pb.ds.tables',
+    'slickCarousel'
   ]);
 
   app.constant('AppConstant', {'api_key': 'btfutlpsfbd13gxo9pnh5mm1lnap66', 'store_id': '8940', baseUrl: '/api/v2/8940'});
