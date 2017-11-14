@@ -42,7 +42,7 @@
       <div class="app-content">
         <h3 ng-repeat-start="category in home.getCategories()">{{category.label}}</h3>
         <div ng-repeat-end class="row">
-          <div ng-repeat="app in home.getApp(category)" class="col-sm-2">
+           <div ng-repeat="app in home.getApp(category)" class="col-sm-2">
             <div class="card card-shadow category-widget app">
               <div class="card-footer category-widget-icon">
                 <img ng-src="{{app.icon_url}}"/>
@@ -59,6 +59,25 @@
               </div>
             </div>
           </div>
+         <!--  <slick settings="home.settings" style="margin-left: 5px;margin-right: 36px;">
+            <div ng-repeat="app in home.getApp(category)" class="col-sm-2">
+              <div class="panel panel-shadow category-widget app">
+                <div class="panel-footer category-widget-icon">
+                  <img ng-src="{{app.icon_url}}"/>
+                </div>
+                <div class="panel-body">
+                  <div class="category-widget-title">{{app.name}}</div>
+                  <div class="category-widget-description">
+                      {{app.description}}
+                  </div>
+                  <div class="category-widget-action">
+                      <span class="badge badge-gray-text">$10 per Person/Month</span>
+                      <span class="badge badge-brand-info" ng-click="home.openApp(app)">Know More</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </slick> -->
         </div>
 
 

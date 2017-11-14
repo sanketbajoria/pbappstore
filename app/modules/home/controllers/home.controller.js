@@ -75,14 +75,37 @@
 
         if (isAllSelected || isNoneSelected) {
           return _this.categories.filter(function (c) {
-            return c.id !== 167;
+            return c.id !== 167 && _this.getApp(c).length > 0;
           });
         } else {
           return _this.categories.filter(function (c) {
-            return c.id !== 167 && c.selected;
+            return c.id !== 167 && c.selected && _this.getApp(c).length > 0;
           });
         }
       };
+
+      _this.settings = {
+        infinite: false,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        dots: false,
+        responsive: [
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      }
     });
 
 })();
