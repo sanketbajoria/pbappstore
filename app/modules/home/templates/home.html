@@ -1,4 +1,93 @@
-<div class="container">
+<div class="container-fluid">
+  <div class="row two-col-wrapper">
+    <div class="col-md-2 leftnav">
+      <div class="section-group">
+        <div class="form-group search-box margin-top-20">
+          <span class="nc-icon-mini ui-1_zoom"></span>
+          <input type="text" class="form-control" id="inputSuccess" placeholder="Search" ng-model="home.filter.searchText" ng-model-options="{'debounce': {'default': 250, 'blur': 0}}">
+        </div>
+      </div>
+      <div class="section-group">
+        <h5>OS</h5>
+        <div class="controls-stacked">
+
+          <label class="control checkbox" ng-repeat="o in home.filter.OS">
+            <input type="checkbox" ng-model="o.selected">
+            <span class="control-indicator"></span>
+            {{o.label}}
+          </label>
+        </div>
+
+      </div>
+
+      <div class="section-group">
+
+      </div>
+
+    </div>
+
+
+    <div class="col-md-10 main-content">
+      <div class="secondary-menu">
+        <div class="form-group dropdown margin-right-10" style="display:inline;">
+          <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+            {{home.selectedCategory.label}}
+            <i class="nc-icon-mini arrows-3_small-down"></i>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-repeat-start="category in home.categories track by category.id">
+              <a ng-click="home.categoryChanged(category);">
+                <span>{{category.label}}</span>
+              </a>
+            </li>
+            <li ng-repeat-end ng-show="category.id==167" class="divider"></li>
+          </ul>
+        </div>
+        <button class="btn btn-primary btn-xs" style="float:right;">
+          <i class="nc-icon-mini ui-1_simple-add" aria-hidden="true" style="font-size: 10px;"></i>
+          &nbsp;&nbsp;New Application&nbsp;&nbsp;
+        </button>
+      </div>
+
+      <div class="app-content">
+        <h3 ng-repeat-start="category in home.getCategories()">{{category.label}}</h3>
+        <div ng-repeat-end class="row">
+          <div ng-repeat="app in home.getApp(category)" class="col-sm-2">
+            <div class="card card-shadow category-widget app">
+              <div class="card-body category-widget-icon">
+                <img ng-src="{{app.icon_url}}"/>
+              </div>
+              <div class="card-footer">
+                <h4 class="category-widget-title">{{app.name}}</h4>
+                <p class="category-widget-rating">
+                    <rating value="{{app.rating || 0}}" max="5"></rating>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-md-12">
       <h1>Home Screen</h1>
@@ -27,4 +116,4 @@
 
 
   </div>
-</div>
+</div> -->

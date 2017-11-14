@@ -11,6 +11,10 @@
 @import '../../modules/home/assets/sass/home';
 
 
+html,body{
+  overflow: hidden;
+}
+
 header i.nc-icon-outline {
   font-size: 20px;
 }
@@ -18,5 +22,81 @@ header i.nc-icon-outline {
 .category-widget {
   img {
     min-height: 100px;
+  }
+}
+
+
+.leftnav .section-group:not(:first-child) {
+  border-top: solid 1px #c0c0c0;
+  margin-top: 10px;
+  padding-top: 15px;
+}
+
+.leftnav {
+  border-right: solid 1px #c0c0c0;
+  background-color: #f8f8f8;
+  padding-top: 20px;
+  min-height: 100%;
+}
+
+.two-col-wrapper {
+  min-height: calc(100vh - 75px);
+  height: calc(100vh - 75px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.main-content{
+  padding: 0px;
+}
+
+.secondary-menu{
+  padding: 20px 10px 16px 10px;
+  background-color: #f8f8f8;
+}
+
+.search-box{
+  position: relative;
+  span{
+    position: absolute;
+    top: 15px;
+    font-size: 10px;
+    left: 12px;
+    color: gray;
+  }
+  input{
+    padding-left: 32px;
+  }
+}
+
+.site-content{
+  margin-bottom: 0px;
+}
+
+.app-content{
+  padding-left: 20px;
+  padding-right: 20px;
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+  overflow-x: hidden;
+} 
+
+.app{
+  img{
+    max-height: 96px;
+    max-width: 100%;
+  }
+  .card-footer{
+    height: 96px;
+    max-height: 96px;
+    min-height: 96px;
+  }
+  .category-widget-title{
+    font-size: 14px;
   }
 }

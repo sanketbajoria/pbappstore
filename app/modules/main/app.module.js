@@ -8,6 +8,21 @@
     'pb.ds.tables'
   ]);
 
+  app.constant('AppConstant', {'api_key': 'btfutlpsfbd13gxo9pnh5mm1lnap66', 'store_id': '8940', baseUrl: '/api/v2/8940'});
+  
+  app.directive('onEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.myEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+  });
   // configure debugging
   angular.module('app').config(function ($logProvider, config) {
     $logProvider.debugEnabled(config.debug);
@@ -27,7 +42,7 @@
 
   // UI ROUTER CONFIG
   angular.module('app').config(function ($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/apps');
   });
 
   angular.module('app').run(

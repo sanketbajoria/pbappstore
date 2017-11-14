@@ -16,6 +16,7 @@ var gulp       = require('gulp'),
   usemin       = require('gulp-usemin'),
   sass         = require('gulp-sass');
 
+  var proxyMiddleware = require('http-proxy-middleware');
 
 var sassFiles = './app/assets/sass/**/*.{scss,sass}';
 var cssFiles = './app/assets/css';
@@ -122,7 +123,8 @@ gulp.task('copy:images', [], function() {
 gulp.task('browser-sync', function() {
   browserSync.init({
     server: {
-      baseDir: './app'
+      baseDir: './app',
+      middleware: proxyMiddleware(['/api/v2/8940'], {target: 'https://www.appaloosa-store.com', changeOrigin: true})
     }
   });
 });
@@ -132,7 +134,8 @@ gulp.task('browser-sync', function() {
 gulp.task('serve-build', [], function() {
   browserSync.init({
     server: {
-      baseDir: './build'
+      baseDir: './build',
+      middleware: proxyMiddleware(['/api/v2/8940'], {target: 'https://www.appaloosa-store.com', changeOrigin: true})
     }
   });
 });

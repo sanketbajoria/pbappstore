@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('pb.core', [
+  var app = angular.module('pb.core', [
     'ngCookies',
     'ngAnimate',
     'ngResource',
@@ -15,3 +15,4 @@
   ]);
 
 })();
+

@@ -3,10 +3,15 @@
   'use strict';
 
   angular.module('pb.ds.home').config(function ($stateProvider) {
-    $stateProvider.state('apps', {
-      url: '/apps',
+    $stateProvider.state('apps.detail', {
+      url: '/apps/:appId',
+      resolve: {
+        app: function (AppFactory, $stateParams) {
+          return AppFactory.getApp($stateParams.appId);
+        }
+      },
       data: {
-        pageTitle: 'PB App Store',
+        pageTitle: 'Application Detail',
         access: 'private',
         bodyClass: 'home'
       },
@@ -16,12 +21,8 @@
           templateUrl: 'modules/main/templates/header.html'
         },
         'content': {
-          controller: 'HomeController as home',
-          templateUrl: 'modules/home/templates/home.html'
-        },
-        'footer': {
-          controller: 'FooterController as footer',
-          templateUrl: 'modules/main/templates/footer.html'
+          controller: 'AppDetailController as app',
+          templateUrl: 'modules/app/templates/app.html'
         }
       }
     });
