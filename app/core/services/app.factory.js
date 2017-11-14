@@ -11,9 +11,6 @@
         }
       }).then(function (r) {
         return r.data.categories.filter(function (c) {
-          if (c.id === 167) {
-            c.label = 'All Apps';
-          }
           return !c.is_stock;
         });
       }),

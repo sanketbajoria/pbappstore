@@ -21,47 +21,41 @@
       </div>
 
       <div class="section-group">
-
+          <h5>Categories</h5>
+          <div class="controls-stacked">
+            <label class="control checkbox" ng-repeat="category in home.categories track by category.id">
+                <input type="checkbox" ng-model="category.selected">
+                <span class="control-indicator"></span>
+                {{category.label}}
+            </label>  
+          </div>
       </div>
-
     </div>
 
 
     <div class="col-md-10 main-content">
       <div class="secondary-menu">
-        <div class="form-group dropdown margin-right-10" style="display:inline;">
-          <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-            {{home.selectedCategory.label}}
-            <i class="nc-icon-mini arrows-3_small-down"></i>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li ng-repeat-start="category in home.categories track by category.id">
-              <a ng-click="home.categoryChanged(category);">
-                <span>{{category.label}}</span>
-              </a>
-            </li>
-            <li ng-repeat-end ng-show="category.id==167" class="divider"></li>
-          </ul>
-        </div>
-        <button class="btn btn-primary btn-xs" style="float:right;">
-          <i class="nc-icon-mini ui-1_simple-add" aria-hidden="true" style="font-size: 10px;"></i>
-          &nbsp;&nbsp;New Application&nbsp;&nbsp;
-        </button>
+        <span style="font-size: 18px;margin-left: 3px;">Applications</span>
+        <span class="badge badge-gray-text" style="margin-left: 12px; margin-top: -5px;">{{home.getApp().length}} applications</span>
       </div>
 
       <div class="app-content">
         <h3 ng-repeat-start="category in home.getCategories()">{{category.label}}</h3>
         <div ng-repeat-end class="row">
           <div ng-repeat="app in home.getApp(category)" class="col-sm-2">
-            <div class="card card-shadow category-widget app" ng-click="home.openApp(app)">
-              <div class="card-body category-widget-icon">
+            <div class="card card-shadow category-widget app">
+              <div class="card-footer category-widget-icon">
                 <img ng-src="{{app.icon_url}}"/>
               </div>
-              <div class="card-footer">
-                <h4 class="category-widget-title">{{app.name}}</h4>
-                <p class="category-widget-rating">
-                    <rating value="{{app.rating || 0}}" max="5"></rating>
-                </p>
+              <div class="card-body">
+                <div class="category-widget-title">{{app.name}}</div>
+                <div class="category-widget-description">
+                    {{app.description}}
+                </div>
+                <div class="category-widget-action">
+                    <span class="badge badge-gray-text">$10 per Person/Month</span>
+                    <span class="badge badge-brand-info" ng-click="home.openApp(app)">Know More</span>
+                </div>
               </div>
             </div>
           </div>
