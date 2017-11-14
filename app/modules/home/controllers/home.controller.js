@@ -29,20 +29,10 @@
       _this.categories = [];
       AppFactory.categories.then(function (categories) {
         _this.categories = categories;
-        categories.forEach(function (c) {
-          if (c.id === 167) {
-            _this.selectedCategory = c;
-          }
-        });
       });
 
       _this.openApp = function (app) {
         $state.go('appDetail', { appId: app.id });
-      };
-
-
-      _this.categoryChanged = function (category) {
-        _this.selectedCategory = category;
       };
 
       var apps = [];
@@ -63,26 +53,58 @@
           if (filteredOS.length > 0) {
             ret = ret && filteredOS.filter(function (v) {
               return a.platforms.indexOf(v) >= 0;
-            }).length > 0 && a.categories.indexOf(category.label) >= 0;
+            }).length > 0;
           }
           if (_this.filter.searchText) {
             ret = ret && a.name.toLowerCase().indexOf(_this.filter.searchText.trim().toLowerCase()) >= 0;
           }
-          ret = ret && a.categories.indexOf(category.label) >= 0;
+          if (category) {
+            ret = ret && a.categories.indexOf(category.label) >= 0;
+          }
           return ret;
         });
       };
 
       _this.getCategories = function () {
-        return _this.categories.filter(function (c) {
-          if (c.id !== 167) {
-            if (_this.selectedCategory.id === 167) {
-              return true;
-            } else {
-              return _this.selectedCategory.id === c.id;
+        var isAllSelected = _this.categories.filter(function (c) {
+          return c.id === 167 && c.selected;
+        }).length > 0;
+        var isNoneSelected = _this.categories.filter(function (c) {
+          return c.selected;
+        }).length === 0;
+
+        if (isAllSelected || isNoneSelected) {
+          return _this.categories.filter(function (c) {
+            return c.id !== 167 && _this.getApp(c).length > 0;
+          });
+        } else {
+          return _this.categories.filter(function (c) {
+            return c.id !== 167 && c.selected && _this.getApp(c).length > 0;
+          });
+        }
+      };
+
+      _this.settings = {
+        infinite: false,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        dots: false,
+        responsive: [
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1
             }
           }
-        });
+        ]
       };
     });
 
