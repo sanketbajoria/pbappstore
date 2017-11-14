@@ -131,7 +131,7 @@ header i.nc-icon-outline { font-size: 20px; }
 }*/
 .app.card.category-widget { box-shadow: 0 3px 7px rgba(0, 0, 0, 0.07); }
 
-.app.card.category-widget img { max-height: 48px; max-width: 48px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.app.card.category-widget img { max-height: 72px; max-width: 132px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
 
 .app.card.category-widget .card-footer { height: 96px; max-height: 96px; min-height: 96px; position: relative; }
 

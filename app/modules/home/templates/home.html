@@ -4,7 +4,7 @@
       <div class="section-group">
         <div class="form-group search-box margin-top-20">
           <span class="nc-icon-mini ui-1_zoom"></span>
-          <input type="text" class="form-control" id="inputSuccess" placeholder="Search" ng-model="home.filter.searchText" ng-model-options="{'debounce': {'default': 250, 'blur': 0}}">
+          <input type="text" class="form-control" id="inputSuccess" placeholder="Search By Name" ng-model="home.filter.searchText" ng-model-options="{'debounce': {'default': 250, 'blur': 0}}">
         </div>
       </div>
       <div class="section-group">
@@ -14,7 +14,7 @@
           <label class="control checkbox" ng-repeat="o in home.filter.OS">
             <input type="checkbox" ng-model="o.selected">
             <span class="control-indicator"></span>
-            {{o.label}}
+            {{o.label}} ({{home.getPlatformAppCount(o)}})
           </label>
         </div>
 
@@ -26,7 +26,7 @@
             <label class="control checkbox" ng-repeat="category in home.categories track by category.id">
                 <input type="checkbox" ng-model="category.selected">
                 <span class="control-indicator"></span>
-                {{category.label}}
+                {{category.label}} {{category.id !==  167?('(' + home.getApp(category).length + ')'):''}}
             </label>  
           </div>
       </div>
@@ -36,7 +36,7 @@
     <div class="col-md-10 main-content">
       <div class="secondary-menu">
         <span style="font-size: 18px;margin-left: 3px;">Applications</span>
-        <span class="badge badge-gray-text" style="margin-left: 12px; margin-top: -5px;">{{home.getApp().length}} applications</span>
+        <span class="badge badge-gray-text" style="margin-left: 12px; margin-top: -5px;">{{home.appCount()}} applications</span>
       </div>
 
       <div class="app-content">
@@ -44,7 +44,7 @@
         <div class="category-description">{{category.description}}</div>
         <div ng-repeat-end class="row">
            <div ng-repeat="app in home.getApp(category)" class="col-sm-2">
-            <div class="card card-shadow category-widget app">
+            <div class="card card-shadow category-widget app" ng-click="home.openApp(app)">
               <div class="card-footer category-widget-icon">
                 <img ng-src="{{app.icon_url}}"/>
               </div>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="category-widget-action">
                     <span class="badge badge-gray-text">$10 per Person/Month</span>
-                    <span class="badge badge-brand-info" ng-click="home.openApp(app)">Know More</span>
+                    <span class="badge badge-brand-info">Know More</span>
                 </div>
               </div>
             </div>

@@ -68,7 +68,7 @@
       _this.openFullImage = function (index) {
         // Lightbox.openModal(_this.screenShots, index);
         // fancyboxService.
-      }
+      };
 
 
 
