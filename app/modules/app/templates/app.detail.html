@@ -78,9 +78,8 @@
                 <div class="detail-section">
                   <h3 class="text-primary">Screenshots</h3>
                   <slick settings="app.imageGallery.settings">
-                    <div class="image-gallery-item thumbnail" ng-class="{'active': app.imageGallery.selected === $index}" ng-repeat="i in app.imageGallery.items"
-                      ng-click="app.imageGallery.click(i, $index)">
-                      <img class="img-responsive" alt="Image name" ng-src="{{i.imageName}}" />
+                    <div class="image-gallery-item thumbnail" ng-class="{'active': app.imageGallery.selected === $index}" ng-repeat="i in app.imageGallery.items">
+                      <img class="img-responsive" alt="Image name" ng-src="{{i.imageName}}" ng-click="app.openFullImage($index)"/>
                     </div>
                   </slick>
                 </div>

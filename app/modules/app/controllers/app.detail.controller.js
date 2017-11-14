@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('pb.ds.home').controller('AppDetailController',
-    function ($log, $uibModal, $stateParams, app) {
+    function ($log, $uibModal, $stateParams, app, Lightbox) {
 
       var _this = this;
 
@@ -15,6 +15,12 @@
           { label: 'iOS', searchValue: ['iPhone', 'iPad'] },
           { label: 'Windows Phone', searchValue: ['WindowsPhone'] }]
       };
+
+      _this.screenShots = [];
+
+      _this.screenShots = app.screenshots_urls.map(function (s) {
+        return s;
+      });
 
 
       _this.imageGallery = {
@@ -52,5 +58,14 @@
           ]
         }
       };
+
+      _this.openFullImage = function (index) {
+        // Lightbox.openModal(_this.screenShots, index);
+      }
+
+
+
     });
+
+  
 })();
