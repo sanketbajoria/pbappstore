@@ -8,7 +8,7 @@
       var _this = this;
 
       _this.data = app;
-
+      _this.ratingValue = 4.2;
       _this.filter = {
         OS: [
           { label: 'Android', searchValue: ['Android'] },

@@ -1,83 +1,23 @@
 <div class="container-fluid">
-  <div class="row two-col-wrapper">
-    <!-- <div class="col-md-2 leftnav">
-      <div class="section-group">
-        <div class="form-group search-box margin-top-20">
-          <span class="nc-icon-mini ui-1_zoom"></span>
-          <input type="text" class="form-control" id="inputSuccess" placeholder="Search" ng-model="app.filter.searchText" ng-model-options="{'debounce': {'default': 250, 'blur': 0}}">
+  <div class="row two-col-wrapper" style="background-color: #f8f8f8">
+    
+    <div class="col-md-10 col-md-offset-2 main-content">
+      <!-- <div class="secondary-menu-1">
+        <div class="row"> -->
+      <div class="col-md-12">
+        <div class="pull-left">
+          <ol class="breadcrumb">
+            <li>
+              <a ui-sref="apps">Applications</a>
+              </i>
+            </li>
+            <li>{{app.data.name}}</li>
+          </ol>
         </div>
-      </div>
-      <div class="section-group">
-        <h5>OS</h5>
-        <div class="controls-stacked">
-
-          <label class="control checkbox" ng-repeat="o in app.filter.OS">
-            <input type="checkbox" ng-model="o.selected">
-            <span class="control-indicator"></span>
-            {{o.label}}
-          </label>
-        </div>
-
+        <!-- </div>
+        </div> -->
       </div>
 
-      <div class="section-group">
-
-      </div>
-
-    </div> -->
-    <div class="col-md-2 leftnav">
-        <div class="section-group">
-          <div class="form-group search-box margin-top-20">
-            <span class="nc-icon-mini ui-1_zoom"></span>
-            <input type="text" class="form-control" id="inputSuccess" placeholder="Search" ng-model="home.filter.searchText" ng-model-options="{'debounce': {'default': 250, 'blur': 0}}">
-          </div>
-        </div>
-        <div class="section-group">
-          <h5>OS</h5>
-          <div class="controls-stacked">
-  
-            <label class="control checkbox" ng-repeat="o in app.filter.OS">
-              <input type="checkbox" ng-model="o.selected">
-              <span class="control-indicator"></span>
-              {{o.label}}
-            </label>
-          </div>
-  
-        </div>
-  
-        <div class="section-group">
-            <h5>Categories</h5>
-            <div class="controls-stacked">
-              <label class="control checkbox" ng-repeat="category in app.categories track by category.id">
-                  <input type="checkbox" ng-model="category.selected">
-                  <span class="control-indicator"></span>
-                  {{category.label}}
-              </label>  
-            </div>
-        </div>
-      </div>
-  
-
-    <div class="col-md-10 main-content" style="background-color: #f8f8f8">
-        <div class="secondary-menu-1">
-            <div class="col-md-12">
-                <div class="pull-left">
-                  <ol class="breadcrumb">
-                    <li>
-                      <a ui-sref="apps">Applications</a>
-                      </i>
-                    </li>
-                    <li>{{app.data.name}}</li>
-                  </ol>
-                </div>
-                <div class="pull-right breadcrumb">
-                  <button class="btn btn-primary">Add Application Update</button>
-                  <button class="btn btn-primary">Edit</button>
-                  <button class="btn btn-primary">Delete Application</button>
-                </div>
-              </div>
-        </div>
-      
       <div class="col-md-10">
         <div class="card card-shadowed">
           <div class="card-body">
@@ -86,14 +26,16 @@
                 <img ng-src="{{app.data.icon_url}}" class="img-responsive" alt="">
               </div>
               <div class="col-md-6">
-                <h1 class="m-t-0 m-b-0 text-primary font-bold">{{app.data.name}}</h1>
-                <h4 class="m-t-0 font-bold">{{app.data.categories.join(", ")}}</h4>
-                <p class="m-t-0">Some more info</p>
+                <h2 class="m-t-0 m-b-0 text-primary font-bold">{{app.data.name}}</h2>
+                <h4 class="m-t-0 font-bold">{{app.data.categories.join(", ")}}&nbsp;&nbsp;
+                  <span class="label label-success">4.2</span>
+                </h4>
+                <p class="m-t-0">Version {{app.data.version}}</p>
               </div>
               <div class="col-md-4">
                 <div class="pull-right">
-                  <button class="btn btn-primary">Add to wishlist</button>
-                  <button class="btn btn-primary">Install</button>
+                  <button class="btn btn-primary btn-sm">Add to wishlist</button>
+                  <button class="btn btn-primary btn-sm">Install</button>
                 </div>
               </div>
             </div>
@@ -102,7 +44,7 @@
               <div class="col-md-12">
                 <div class="detail-section">
                   <h3 class="text-primary">Banner</h3>
-                  <img ng-src="{{app.data.banner_url}}" class="img-responsive" alt="">
+                  <img ng-src="{{app.data.banner_url}}" width=100%; class="img-responsive" alt="">
                 </div>
               </div>
             </div>
@@ -114,7 +56,7 @@
                   <slick settings="app.imageGallery.settings">
                     <div class="image-gallery-item thumbnail" ng-class="{'active': app.imageGallery.selected === $index}" ng-repeat="i in app.imageGallery.items">
                       <a id="fb-{{$index}}" alt="Image name" ng-href="{{i.imageName}}" fancyboxable="{type: 'image'}">
-                        <img ng-src="{{i.imageName}}" class="img-responsive"/>
+                        <img ng-src="{{i.imageName}}" class="img-responsive" />
                       </a>
                     </div>
                   </slick>
@@ -141,11 +83,12 @@
             </div>
 
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <div class="detail-section">
                   <h3 class="text-primary">Additional Information</h3>
                   <div class="row">
-                    <div class="col-md-9">
+
+                    <div class="col-md-12">
                       <div class="row">
                         <div class="col-md-4">
                           <div class="info">
@@ -167,6 +110,8 @@
                             <p class="content">1</p>
                           </div>
                         </div>
+                      </div>
+                      <div class="row m-t-3">
 
                         <div class="col-md-4">
                           <div class="info">
@@ -188,6 +133,8 @@
                             <p class="content">{{app.data.min_os_version}}</p>
                           </div>
                         </div>
+                      </div>
+                      <div class="row m-t-3">
 
                         <div class="col-md-4">
                           <div class="info">
@@ -207,15 +154,97 @@
                   </div>
                 </div>
               </div>
+              <div class="col-md-6">
+                <div class="detail-section">
+                  <h3 class="text-primary">Reviews</h3>
+                  <div class="row m-t-3">
+                    <div class="col-md-4">
+                      <p class="rating-value">4.2</p>
+                      <rating max=5 size=13px color="#737373" align="left" value="app.ratingValue"></rating>
+                      <div>
+                        <span class="nc-icon-mini users_single-05"></span> 6540 total
+                      </div>
+                    </div>
+                    <div class="col-md-8 m-p-0">
+                      <div class="col-md-12 m-p-0">
+                        <div class="star-label">
+                          <span class="star glyphicon glyphicon-star"></span>
+                          <span>5</span>
+                        </div>
+                        <div class="progress rating-progress ">
+
+                          <div class="progress-bar star-5" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:90%">
+                            <span class="sr-only">4,606</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 m-t-5 m-p-0">
+                        <div class="star-label">
+                          <span class="star glyphicon glyphicon-star"></span>
+                          <span>4</span>
+                        </div>
+                        <div class="progress rating-progress ">
+
+                          <div class="progress-bar star-4" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width:30%">
+                            <span class="sr-only">860</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 m-t-5 m-p-0">
+                        <div class="star-label">
+                          <span class="star glyphicon glyphicon-star"></span>
+                          <span>3</span>
+                        </div>
+                        <div class="progress rating-progress ">
+
+                          <div class="progress-bar star-3" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:15%">
+                            <span class="sr-only">300</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 m-t-5 m-p-0">
+                        <div class="star-label">
+                          <span class="star glyphicon glyphicon-star"></span>
+                          <span>2</span>
+                        </div>
+                        <div class="progress rating-progress ">
+
+                          <div class="progress-bar star-2" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:12%">
+                            <span class="sr-only">90</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 m-t-5 m-p-0">
+                        <div class="star-label">
+                          <span class="star glyphicon glyphicon-star"></span>
+                          <span>1</span>
+                        </div>
+                        <div class="progress rating-progress ">
+
+                          <div class="progress-bar star-1" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:14%">
+                            <span class="sr-only">278</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
-
           </div>
-        </div>
 
+        </div>
       </div>
 
     </div>
+
   </div>
+</div>
 
 </div>
 
