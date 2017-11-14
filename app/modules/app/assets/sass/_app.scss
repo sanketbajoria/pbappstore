@@ -1,10 +1,13 @@
 // place scss for styling this module here
 // this file is imported into /app/assets/sass/app.scss
 
+.secondary-menu-1 {
+    padding: 0px 20px 22px 20px;
+}
 .breadcrumb {
-   
+        margin: 11px 0 !important;
         li {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
             a {
                 text-decoration: none;

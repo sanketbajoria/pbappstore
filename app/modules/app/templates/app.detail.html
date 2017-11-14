@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row two-col-wrapper">
-    <div class="col-md-2 leftnav">
+    <!-- <div class="col-md-2 leftnav">
       <div class="section-group">
         <div class="form-group search-box margin-top-20">
           <span class="nc-icon-mini ui-1_zoom"></span>
@@ -24,26 +24,60 @@
 
       </div>
 
-    </div>
-
-
-    <div class="col-md-10 main-content" style="background-color: #f8f8f8">
-      <div class="col-md-12">
-        <div class="pull-left">
-          <ol class="breadcrumb">
-            <li>
-              <a href="#">Applications</a>
-              </i>
-            </li>
-            <li>Ado App</li>
-          </ol>
+    </div> -->
+    <div class="col-md-2 leftnav">
+        <div class="section-group">
+          <div class="form-group search-box margin-top-20">
+            <span class="nc-icon-mini ui-1_zoom"></span>
+            <input type="text" class="form-control" id="inputSuccess" placeholder="Search" ng-model="home.filter.searchText" ng-model-options="{'debounce': {'default': 250, 'blur': 0}}">
+          </div>
         </div>
-        <div class="pull-right breadcrumb">
-          <button class="btn btn-primary">Add Application Update</button>
-          <button class="btn btn-primary">Edit</button>
-          <button class="btn btn-primary">Delete Application</button>
+        <div class="section-group">
+          <h5>OS</h5>
+          <div class="controls-stacked">
+  
+            <label class="control checkbox" ng-repeat="o in app.filter.OS">
+              <input type="checkbox" ng-model="o.selected">
+              <span class="control-indicator"></span>
+              {{o.label}}
+            </label>
+          </div>
+  
+        </div>
+  
+        <div class="section-group">
+            <h5>Categories</h5>
+            <div class="controls-stacked">
+              <label class="control checkbox" ng-repeat="category in app.categories track by category.id">
+                  <input type="checkbox" ng-model="category.selected">
+                  <span class="control-indicator"></span>
+                  {{category.label}}
+              </label>  
+            </div>
         </div>
       </div>
+  
+
+    <div class="col-md-10 main-content" style="background-color: #f8f8f8">
+        <div class="secondary-menu-1">
+            <div class="col-md-12">
+                <div class="pull-left">
+                  <ol class="breadcrumb">
+                    <li>
+                      <a ui-sref="apps">Applications</a>
+                      </i>
+                    </li>
+                    <li>{{app.data.name}}</li>
+                  </ol>
+                </div>
+                <div class="pull-right breadcrumb">
+                  <button class="btn btn-primary">Add Application Update</button>
+                  <button class="btn btn-primary">Edit</button>
+                  <button class="btn btn-primary">Delete Application</button>
+                </div>
+              </div>
+        </div>
+      
       <div class="col-md-10">
         <div class="card card-shadowed">
           <div class="card-body">

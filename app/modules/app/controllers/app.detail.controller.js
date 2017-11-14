@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('pb.ds.home').controller('AppDetailController',
-    function ($log, $uibModal, $stateParams, app, Lightbox) {
+    function ($log, $uibModal, $stateParams, app, Lightbox, AppFactory) {
 
       var _this = this;
 
@@ -15,6 +15,12 @@
           { label: 'iOS', searchValue: ['iPhone', 'iPad'] },
           { label: 'Windows Phone', searchValue: ['WindowsPhone'] }]
       };
+
+      _this.categories = [];
+      AppFactory.categories.then(function (categories) {
+        _this.categories = categories;
+      });
+
 
       _this.screenShots = [];
 
