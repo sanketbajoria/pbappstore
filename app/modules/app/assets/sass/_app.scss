@@ -1,3 +1,31 @@
 // place scss for styling this module here
 // this file is imported into /app/assets/sass/app.scss
 
+.breadcrumb {
+   
+        li {
+            font-size: 24px;
+            font-weight: bold;
+            a {
+                text-decoration: none;
+            }
+        }
+}
+
+.detail-section {
+    margin-top: 40px;
+}
+
+.info {
+    h3 {
+        color: rgb(102, 102, 102);
+    }
+    p {
+        font-size: 20px; 
+    }
+}
+
+p {
+    color: black;
+    font-size: 16px;
+}

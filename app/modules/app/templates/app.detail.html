@@ -1,4 +1,192 @@
-<div class="container">
+<div class="container-fluid">
+  <div class="row two-col-wrapper">
+    <div class="col-md-2 leftnav">
+      <div class="section-group">
+        <div class="form-group search-box margin-top-20">
+          <span class="nc-icon-mini ui-1_zoom"></span>
+          <input type="text" class="form-control" id="inputSuccess" placeholder="Search" ng-model="app.filter.searchText" ng-model-options="{'debounce': {'default': 250, 'blur': 0}}">
+        </div>
+      </div>
+      <div class="section-group">
+        <h5>OS</h5>
+        <div class="controls-stacked">
+
+          <label class="control checkbox" ng-repeat="o in app.filter.OS">
+            <input type="checkbox" ng-model="o.selected">
+            <span class="control-indicator"></span>
+            {{o.label}}
+          </label>
+        </div>
+
+      </div>
+
+      <div class="section-group">
+
+      </div>
+
+    </div>
+
+
+    <div class="col-md-10 main-content" style="background-color: #f8f8f8">
+      <div class="col-md-12">
+        <div class="pull-left">
+          <ol class="breadcrumb">
+            <li>
+              <a href="#">Applications</a>
+              </i>
+            </li>
+            <li>Ado App</li>
+          </ol>
+        </div>
+        <div class="pull-right breadcrumb">
+          <button class="btn btn-primary">Add Application Update</button>
+          <button class="btn btn-primary">Edit</button>
+          <button class="btn btn-primary">Delete Application</button>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="card card-shadowed">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <img ng-src="{{app.data.icon_url}}" class="img-responsive" alt="">
+              </div>
+              <div class="col-md-6">
+                <h1 class="m-t-0 m-b-0 text-primary font-bold">{{app.data.name}}</h1>
+                <h4 class="m-t-0 font-bold">{{app.data.categories.join(", ")}}</h4>
+                <p class="m-t-0">Some more info</p>
+              </div>
+              <div class="col-md-4">
+                <div class="pull-right">
+                  <button class="btn btn-primary">Add to wishlist</button>
+                  <button class="btn btn-primary">Install</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="detail-section">
+                  <h3 class="text-primary">Banner</h3>
+                  <img ng-src="{{app.data.banner_url}}" alt="">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="detail-section">
+                  <h3 class="text-primary">Screenshots</h3>
+                  <slick settings="app.imageGallery.settings">
+                    <div class="image-gallery-item thumbnail" ng-class="{'active': app.imageGallery.selected === $index}" ng-repeat="i in app.imageGallery.items"
+                      ng-click="app.imageGallery.click(i, $index)">
+                      <img class="img-responsive" alt="Image name" ng-src="{{i.imageName}}" />
+                    </div>
+                  </slick>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="detail-section">
+                  <h3 class="text-primary">Description</h3>
+                  <p>{{app.data.description}}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="detail-section">
+                  <h3 class="text-primary">What's new</h3>
+                  <p>Technical improvements and bug fixes.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="detail-section">
+                  <h3 class="text-primary">Additional Information</h3>
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="info">
+                            <h3 class="title ">Bundle Id</h3>
+                            <p class="content">{{app.data.application_id}}</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="info">
+                            <h3 class="title ">OS Type</h3>
+                            <p class="content">{{app.data.application_type}}</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="info">
+                            <h3 class="title ">Build</h3>
+                            <p class="content">1</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="info">
+                            <h3 class="title ">Added by</h3>
+                            <p class="content">Kapil Soni</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="info">
+                            <h3 class="title ">Version</h3>
+                            <p class="content">{{app.data.version}}</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="info">
+                            <h3 class="title ">Minimum OS Version</h3>
+                            <p class="content">{{app.data.min_os_version}}</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="info">
+                            <h3 class="title ">Category</h3>
+                            <p class="content">{{app.data.categories.join(", ")}}</p>
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="info">
+                            <h3 class="title ">Published on</h3>
+                            <p class="content">{{app.data.created_at | date}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<!-- <div class="container">
   <div class="row">
       <div class="col-md-12">
         <img ng-src="{{app.data.icon_url}}" />
@@ -6,25 +194,21 @@
         <h4>{{app.data.catchphrase}}</h4> 
 
          <!-- gallery large image -->
-          <div class="row spacer-bottom-md">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-              <img class="img-responsive thumbnail"  alt="Image name"
-                  ng-src="{{app.imageGallery.selectedImage}}"/>
-            </div>
-          </div>
-  
-          <!-- slick carousel -->
-          <slick settings="app.imageGallery.settings">
-            <div class="image-gallery-item thumbnail" ng-class="{'active': app.imageGallery.selected === $index}"
-                ng-repeat="i in app.imageGallery.items" ng-click="app.imageGallery.click(i, $index)">
-              <img class="img-responsive" alt="Image name" ng-src="{{i.imageName}}"/>
-            </div>
-          </slick>
-
-
-      </div>
+<!-- <div class="row spacer-bottom-md">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+    <img class="img-responsive thumbnail" alt="Image name" ng-src="{{app.imageGallery.selectedImage}}" />
   </div>
 </div>
 
+<!-- slick carouse
+<slick settings="app.imageGallery.settings">
+  <div class="image-gallery-item thumbnail" ng-class="{'active': app.imageGallery.selected === $index}" ng-repeat="i in app.imageGallery.items"
+    ng-click="app.imageGallery.click(i, $index)">
+    <img class="img-responsive" alt="Image name" ng-src="{{i.imageName}}" />
+  </div>
+</slick>
 
 
+</div>
+</div>
+</div> -->

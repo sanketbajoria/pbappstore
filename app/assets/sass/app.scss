@@ -9,6 +9,7 @@
 // import scss partials from modules folder here
 @import '../../modules/tables/assets/sass/tables';
 @import '../../modules/home/assets/sass/home';
+@import '../../modules/app/assets/sass/app';
 
 header i.nc-icon-outline {
   font-size: 20px;
@@ -48,11 +49,16 @@ header i.nc-icon-outline {
 
 .main-content{
   padding: 0px;
+  overflow: auto;
 }
 
 .secondary-menu{
   padding: 20px 10px 16px 10px;
   background-color: #f8f8f8;
+}
+
+.font-bold {
+  font-weight: bold;
 }
 
 .search-box{
@@ -94,4 +100,12 @@ header i.nc-icon-outline {
   .category-widget-title{
     font-size: 14px;
   }
+}
+
+.m-t-0 {
+  margin-top: 0 !important;
+}
+
+.m-b-0 {
+  margin-bottom: 0 !important;
 }

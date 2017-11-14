@@ -9,6 +9,14 @@
 
       _this.data = app;
 
+      _this.filter = {
+        OS: [
+          { label: 'Android', searchValue: ['Android'] },
+          { label: 'iOS', searchValue: ['iPhone', 'iPad'] },
+          { label: 'Windows Phone', searchValue: ['WindowsPhone'] }]
+      };
+
+
       _this.imageGallery = {
         items: app.screenshots_urls.map(function (s) {
           return {
@@ -25,7 +33,7 @@
           infinite: true,
           slidesToShow: 3,
           slidesToScroll: 3,
-          dots: true,
+          dots: false,
           responsive: [
             {
               breakpoint: 767,
