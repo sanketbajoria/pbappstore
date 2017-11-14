@@ -133,6 +133,7 @@ gulp.task('browser-sync', function() {
 // run from the build folder
 gulp.task('serve-build', [], function() {
   browserSync.init({
+    open: false,
     server: {
       baseDir: './build',
       middleware: proxyMiddleware(['/api/v2/8940'], {target: 'https://www.appaloosa-store.com', changeOrigin: true})

@@ -9,3 +9,5 @@ scss-lint.log
 build
 /bin/
 .vscode
+typings.json
+typings/
