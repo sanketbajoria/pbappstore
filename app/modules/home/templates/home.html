@@ -24,7 +24,7 @@
           <h5>Categories</h5>
           <div class="controls-stacked">
             <label class="control checkbox" ng-repeat="category in home.categories track by category.id">
-                <input type="checkbox" ng-model="category.selected">
+                <input type="checkbox" ng-model="category.selected" ng-change="home.toggleAllCategory(category)">
                 <span class="control-indicator"></span>
                 {{category.label}} {{category.id !==  167?('(' + home.getApp(category).length + ')'):''}}
             </label>  

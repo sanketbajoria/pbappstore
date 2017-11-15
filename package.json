@@ -5,11 +5,15 @@
   "author": "GUX",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "gulp-ng-annotate": "2.0.0",
     "gulp-replace": "0.5.4",
     "gulp-sass": "3.1.0",
     "gulp-usemin": "0.3.28",
-    "http-proxy-middleware": "^0.17.4"
+    "http-proxy-middleware": "^0.17.4",
+    "sequelize": "^4.22.6",
+    "sqlite3": "^3.1.13"
   },
   "devDependencies": {
     "autoprefixer-core": "6.0.1",

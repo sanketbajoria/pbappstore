@@ -11,6 +11,9 @@
         }
       }).then(function (r) {
         return r.data.categories.filter(function (c) {
+          if (c.id === 167) {
+            c.selected = true;
+          }
           if (c.id === 168) {
             c.description = 'Send, Receive, Track, Sort, Go Global';
           }

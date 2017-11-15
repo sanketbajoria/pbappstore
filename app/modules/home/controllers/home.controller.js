@@ -9,9 +9,8 @@
 
       _this.filter = {
         OS: [
-          { label: 'Android', searchValue: ['Android'] },
-          { label: 'iOS', searchValue: ['iPhone', 'iPad'] },
-          { label: 'Windows Phone', searchValue: ['WindowsPhone'] }]
+          { label: 'Android', searchValue: ['native'] },
+          { label: 'Web Apps', searchValue: ['webapp'] }]
       };
 
       _this.open = function (item) {
@@ -29,7 +28,36 @@
       _this.categories = [];
       AppFactory.categories.then(function (categories) {
         _this.categories = categories;
+        _this.allCategory = categories.filter(function (c) {
+          return c.id === 167;
+        })[0];
       });
+
+      _this.toggleAllCategory = function (category) {
+        if (category) {
+          if (category.id === 167) {
+            if (category.selected) {
+              _this.categories.forEach(function (c) {
+                if (c.id !== 167) {
+                  c.selected = false;
+                }
+              });
+            }
+          } else {
+            if (category.selected) {
+              _this.allCategory.selected = false;
+            }
+          }
+        }
+
+        var isNoneSelected = _this.categories.filter(function (c) {
+          return c.selected;
+        }).length === 0;
+
+        if (isNoneSelected) {
+          _this.allCategory.selected = true;
+        }
+      };
 
       _this.openApp = function (app) {
         $state.go('appDetail', { appId: app.id });
@@ -46,7 +74,7 @@
         });
         return apps.filter(function (a) {
           var ret = platform.searchValue.filter(function (v) {
-            return a.platforms.indexOf(v) >= 0;
+            return a.application_type === v;
           }).length > 0;
           if (_this.filter.searchText) {
             ret = ret && a.name.toLowerCase().indexOf(_this.filter.searchText.trim().toLowerCase()) >= 0;
@@ -74,7 +102,7 @@
           var ret = true;
           if (filteredOS.length > 0) {
             ret = ret && filteredOS.filter(function (v) {
-              return a.platforms.indexOf(v) >= 0;
+              return a.application_type === v;
             }).length > 0;
           }
           if (_this.filter.searchText) {
@@ -102,7 +130,7 @@
           var ret = true;
           if (filteredOS.length > 0) {
             ret = ret && filteredOS.filter(function (v) {
-              return a.platforms.indexOf(v) >= 0;
+              return a.application_type === v;
             }).length > 0;
           }
           if (_this.filter.searchText) {
