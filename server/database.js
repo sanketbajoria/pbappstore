@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+var Op = Sequelize.Op;
 const sequelize = new Sequelize('database', 'pbappstore', 'PB@PP$TORE', {
     host: 'localhost',
     dialect: 'sqlite',
