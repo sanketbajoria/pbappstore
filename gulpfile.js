@@ -133,6 +133,8 @@ gulp.task('browser-sync', function() {
 // run from the build folder
 gulp.task('serve', [], function() {
   browserSync.init({
+    ghostMode: false,
+    codeSync: false,
     open: false,
     port: 80,
     server: {
