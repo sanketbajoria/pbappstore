@@ -35,7 +35,7 @@
               <div class="col-md-4">
                 <div class="pull-right">
                   <button class="btn btn-primary btn-sm">Add to wishlist</button>
-                  <button class="btn btn-primary btn-sm">Install</button>
+                  <a class="btn btn-primary btn-sm" ng-href="{{app.appUrl}}" target="{{app.data.application_type === 'webapp' ? '_blank' : '_self'}}">Install</a>
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@
                         <div class="col-md-4">
                           <div class="info">
                             <h3 class="title ">Added by</h3>
-                            <p class="content">Kapil Soni</p>
+                            <p class="content">Pitney Bowes</p>
                           </div>
                         </div>
 
@@ -129,7 +129,7 @@
 
                         <div class="col-md-4">
                           <div class="info">
-                            <h3 class="title ">Minimum OS Version</h3>
+                            <h3 class="title ">Min OS Version</h3>
                             <p class="content">{{app.data.min_os_version}}</p>
                           </div>
                         </div>

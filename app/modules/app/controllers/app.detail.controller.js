@@ -24,6 +24,8 @@
 
       _this.screenShots = [];
 
+
+
       _this.screenShots = app.screenshots_urls.map(function (s) {
         return s;
       });
@@ -70,9 +72,20 @@
         // fancyboxService.
       };
 
+      _this.appUrl = '';
+      if (_this.data.application_type === 'webapp') {
+        _this.appUrl = _this.data.url;
+      } else {
+        var url = _this.data.download_url;
+        if (url.startsWith('http')) {
+          _this.appUrl = url;
+        } else {
+          _this.appUrl = _this.data.url;
+        }
+      }
 
 
     });
 
-  
+
 })();
