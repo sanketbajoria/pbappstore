@@ -124,7 +124,8 @@ gulp.task('browser-sync', function() {
   browserSync.init({
     server: {
       baseDir: './app',
-      middleware: proxyMiddleware(['/api/v2/8940'], {target: 'https://www.appaloosa-store.com', changeOrigin: true})
+      //middleware: proxyMiddleware(['/api/v2/8940'], {target: 'https://www.appaloosa-store.com', changeOrigin: true})
+      middleware: proxyMiddleware(['/api'], {target: 'http://localhost:8080', changeOrigin: true})
     }
   });
 });
@@ -139,7 +140,8 @@ gulp.task('serve', [], function() {
     port: 80,
     server: {
       baseDir: './build',
-      middleware: proxyMiddleware(['/api/v2/8940'], {target: 'https://www.appaloosa-store.com', changeOrigin: true})
+      //middleware: proxyMiddleware(['/api/v2/8940'], {target: 'https://www.appaloosa-store.com', changeOrigin: true})
+      middleware: proxyMiddleware(['/api'], {target: 'http://localhost:8080', changeOrigin: true})
     }
   });
 });
