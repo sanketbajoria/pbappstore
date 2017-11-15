@@ -12,7 +12,7 @@ const sequelize = new Sequelize('database', 'pbappstore', 'PB@PP$TORE', {
     },
 
     // SQLite only
-    storage: './database.sqlite'
+    storage: './database/database.sqlite'
 });
 
 const User = sequelize.define('user', {
@@ -26,6 +26,7 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING
     }
 });
+User.sync();
 
 module.exports = {
     createUser: function (user) {
