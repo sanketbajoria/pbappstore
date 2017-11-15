@@ -4,7 +4,7 @@
 
   angular.module('pb.ds.home').config(function ($stateProvider) {
     $stateProvider.state('appDetail', {
-      url: '/apps/:appId',
+      url: '/apps/:appId?req',
       resolve: {
         app: function (AppFactory, $stateParams) {
           return AppFactory.getApp($stateParams.appId);

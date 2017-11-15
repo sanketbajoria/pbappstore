@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('pb.ds.home').controller('AppDetailController',
-    function ($log, $uibModal, $stateParams, app, AppFactory, fancyboxService) {
+    function ($log, $uibModal, $state, $stateParams, app, AppFactory, fancyboxService,AuthFactory) {
 
       var _this = this;
 
@@ -82,6 +82,24 @@
         } else {
           _this.appUrl = _this.data.url;
         }
+      }
+
+      _this.downloadApp = function() {
+        if (localStorage.getItem('session') === 'true') {
+          // user is signed in
+          if (_this.data.application_type === 'webapp') {
+            window.open(_this.appUrl, '_blank');
+          } else {
+            window.open(_this.appUrl);
+          }
+        } else {
+          // go to signin state
+          $state.go('signin', {refapp: $stateParams.appId, req: 'download'});
+        }
+      }
+
+      if ($stateParams.req === 'download') {
+        _this.downloadApp();
       }
 
 

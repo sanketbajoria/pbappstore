@@ -35,7 +35,7 @@
               <div class="col-md-4">
                 <div class="pull-right">
                   <button class="btn btn-primary btn-sm">Add to wishlist</button>
-                  <a class="btn btn-primary btn-sm" ng-href="{{app.appUrl}}" target="{{app.data.application_type === 'webapp' ? '_blank' : '_self'}}">Install</a>
+                  <button class="btn btn-primary btn-sm" ng-click="app.downloadApp()">{{app.data.application_type == 'webapp' ? 'Get Started' : 'Get App'}}</button>
                 </div>
               </div>
             </div>
