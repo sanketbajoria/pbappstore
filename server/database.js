@@ -1,5 +1,11 @@
 const Sequelize = require('sequelize');
 var Op = Sequelize.Op;
+var fs = require('fs');
+var dir = './database';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
 const sequelize = new Sequelize('database', 'pbappstore', 'PB@PP$TORE', {
     host: 'localhost',
     dialect: 'sqlite',
