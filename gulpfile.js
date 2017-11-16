@@ -147,13 +147,8 @@ gulp.task('browser-sync', function () {
 }); */
 
 gulp.task('serve', [], function () {
-  runSequence(
-    'build',
-    function () {
-      var server = gls.new('server/index.js');
-      server.start();
-    }
-  );
+  var server = gls.new('server/index.js');
+  server.start();
 });
 
 
