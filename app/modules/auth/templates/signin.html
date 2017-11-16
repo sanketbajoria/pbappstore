@@ -21,16 +21,16 @@
 
                         <form autocomplete="off" name="myForm" class="spacer-top-md"
                             novalidate="" style="">
-                            <div class="form-group" ng-class="{'has-error': myForm.name.$error.required  && myForm.name.$dirty}">
+                            <div class="form-group" ng-class="{'has-error': (myForm.name.$error.required || myForm.name.$error.email)  && myForm.name.$dirty}">
                                 <label for="name">
                                     <span translate="EMAIL_LABEL">Email</span>
                                 </label>
-                                <input class="form-control" name="name" required="" type="text" ng-model="signin.data.email">
-                                <span class="help-block" ng-show="myForm.name.$error.required && myForm.name.$dirty">
+                                <input class="form-control" name="name" required="" type="email" ng-model="signin.data.email">
+                                <span class="help-block" ng-show="(myForm.name.$error.required || myForm.name.$error.email) && myForm.name.$dirty">
                                     <span translate="INVALID_EMAIL">Enter a valid email address.</span>
                                 </span>
                             </div>
-                            <div class="form-group" ng-class="{'has-error': myForm.password.$error.required && myForm.password.$dirty}">
+                            <div class="form-group" ng-class="{'has-error': (myForm.password.$error.required || signin.invalidPassword) && myForm.password.$dirty}">
                                 <label for="password">
                                     <span translate="PASSWORD_LABEL">Password</span>
                                 </label>

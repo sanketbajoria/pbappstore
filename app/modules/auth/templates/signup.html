@@ -18,12 +18,12 @@
                         <span>Enter a name.</span>
                     </span>
                 </div>
-                <div class="form-group" ng-class="{'has-error': myForm.email.$error.required  && myForm.email.$dirty}">
+                <div class="form-group" ng-class="{'has-error': (myForm.email.$error.required || myForm.email.$error.email) && myForm.email.$dirty}">
                     <label for="name">
                         <span translate="EMAIL_LABEL">Email</span>
                     </label>
-                    <input class="form-control" name="email" required="" type="text" ng-model="signup.data.email">
-                    <span class="help-block" ng-show="myForm.email.$error.required && myForm.email.$dirty">
+                    <input class="form-control" name="email" required="" type="email" ng-model="signup.data.email">
+                    <span class="help-block" ng-show="(myForm.email.$error.required || myForm.email.$error.email) && myForm.email.$dirty">
                         <span translate="INVALID_EMAIL">Enter a valid email address.</span>
                     </span>
                 </div>
