@@ -1,4 +1,11 @@
 const Sequelize = require('sequelize');
+var Op = Sequelize.Op;
+var fs = require('fs');
+var dir = './database';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
 const sequelize = new Sequelize('database', 'pbappstore', 'PB@PP$TORE', {
     host: 'localhost',
     dialect: 'sqlite',
@@ -11,7 +18,7 @@ const sequelize = new Sequelize('database', 'pbappstore', 'PB@PP$TORE', {
     },
 
     // SQLite only
-    storage: './database.sqlite'
+    storage: './database/database.sqlite'
 });
 
 const User = sequelize.define('user', {
@@ -25,6 +32,7 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING
     }
 });
+User.sync();
 
 module.exports = {
     createUser: function (user) {

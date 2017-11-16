@@ -1,22 +1,22 @@
 /*jshint strict:false */
 /*jshint node:true */
 
-var gulp       = require('gulp'),
-  browserSync  = require('browser-sync').create(),
-  del          = require('del'),
-  minifyCss    = require('gulp-minify-css'),
-  ngAnnotate   = require('gulp-ng-annotate'),
+var gulp = require('gulp'),
+  browserSync = require('browser-sync').create(),
+  del = require('del'),
+  minifyCss = require('gulp-minify-css'),
+  ngAnnotate = require('gulp-ng-annotate'),
   autoprefixer = require('gulp-autoprefixer'),
-  reload       = browserSync.reload,
-  replace      = require('gulp-replace'),
-  rev          = require('gulp-rev'),
-  runSequence  = require('run-sequence'),
-  sourcemaps   = require('gulp-sourcemaps'),
-  uglify       = require('gulp-uglify'),
-  usemin       = require('gulp-usemin'),
-  sass         = require('gulp-sass');
-
-  var proxyMiddleware = require('http-proxy-middleware');
+  reload = browserSync.reload,
+  replace = require('gulp-replace'),
+  rev = require('gulp-rev'),
+  runSequence = require('run-sequence'),
+  sourcemaps = require('gulp-sourcemaps'),
+  uglify = require('gulp-uglify'),
+  usemin = require('gulp-usemin'),
+  sass = require('gulp-sass');
+var gls = require('gulp-live-server');
+var proxyMiddleware = require('http-proxy-middleware');
 
 var sassFiles = './app/assets/sass/**/*.{scss,sass}';
 var cssFiles = './app/assets/css';
@@ -41,7 +41,7 @@ gulp.task('sass', function () {
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(sourcemaps.write()) // inline sourcemaps
     .pipe(gulp.dest(cssFiles))
-    .pipe(browserSync.stream({match: '**/*.css'}));
+    .pipe(browserSync.stream({ match: '**/*.css' }));
 });
 gulp.task('sass-build', function () {
   return gulp
@@ -56,7 +56,7 @@ gulp.task('sass-build', function () {
 
 
 //usemin
-gulp.task('usemin', function() {
+gulp.task('usemin', function () {
   gulp.src('./app/index.html')
     .pipe(usemin({
       css: [minifyCss, rev],
@@ -81,58 +81,58 @@ gulp.task('usemin', function() {
 
 
 //copy modules
-gulp.task('copy:modules', [], function() {
+gulp.task('copy:modules', [], function () {
   gulp.src([
-      './app/modules/**/*.*',
-      '!./app/modules/**/*.js'
-    ])
+    './app/modules/**/*.*',
+    '!./app/modules/**/*.js'
+  ])
     .pipe(gulp.dest('./build/modules'));
 });
 
 
 //copy core data json
-gulp.task('copy:json-core-data', [], function() {
+gulp.task('copy:json-core-data', [], function () {
   gulp.src([
-      './app/core/data/**/*.json'
-    ])
+    './app/core/data/**/*.json'
+  ])
     .pipe(gulp.dest('./build/core/data/'));
 });
 
 
 //copy fonts
-gulp.task('copy:fonts', [], function() {
+gulp.task('copy:fonts', [], function () {
   gulp.src([
-      './app/assets/fonts/*',
-      './app/bower_components/bootstrap/dist/fonts/*',
-      './app/bower_components/pb-design-system/dist/fonts/*',
-    ])
+    './app/assets/fonts/*',
+    './app/bower_components/bootstrap/dist/fonts/*',
+    './app/bower_components/pb-design-system/dist/fonts/*',
+  ])
     .pipe(gulp.dest('./build/assets/fonts'));
 });
 
 
 //copy images
-gulp.task('copy:images', [], function() {
+gulp.task('copy:images', [], function () {
   gulp.src([
-      './app/assets/images/**/*'
-    ])
+    './app/assets/images/**/*'
+  ])
     .pipe(gulp.dest('./build/assets/images'));
 });
 
 
 // browser-sync task for starting the server.
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', function () {
   browserSync.init({
     server: {
       baseDir: './app',
       //middleware: proxyMiddleware(['/api/v2/8940'], {target: 'https://www.appaloosa-store.com', changeOrigin: true})
-      middleware: proxyMiddleware(['/api'], {target: 'http://localhost:8080', changeOrigin: true})
+      middleware: proxyMiddleware(['/api'], { target: 'http://localhost:80', changeOrigin: true })
     }
   });
 });
 
 
 // run from the build folder
-gulp.task('serve', [], function() {
+/* gulp.task('serve', [], function() {
   browserSync.init({
     ghostMode: false,
     codeSync: false,
@@ -144,11 +144,21 @@ gulp.task('serve', [], function() {
       middleware: proxyMiddleware(['/api/v1'], {target: 'http://localhost:8080', changeOrigin: true})
     }
   });
+}); */
+
+gulp.task('serve', [], function () {
+  runSequence(
+    'build',
+    function () {
+      var server = gls.new('server/index.js');
+      server.start();
+    }
+  );
 });
 
 
 //build
-gulp.task('build', [], function() {
+gulp.task('build', [], function () {
   runSequence(
     'sass-build',
     'usemin',
@@ -161,11 +171,11 @@ gulp.task('build', [], function() {
 
 
 // run this to open project in browser and watch for changes in CSS
-gulp.task('default', ['watch'], function() {});
+gulp.task('default', ['watch'], function () { });
 
 // Watch
-gulp.task('watch', ['browser-sync'], function() {
-  gulp.watch(['app/assets/sass/**/*.scss', 'app/modules/**/*.scss'], {interval: 500}, ['sass']);
-  gulp.watch(['app/core/**/*.js', 'app/modules/**/*.js', 'app/core/**/*.json'], {interval: 500}, reload);
-  gulp.watch(['app/core/**/*.html', 'app/modules/**/*.html'], {interval: 500}, reload);
+gulp.task('watch', ['browser-sync'], function () {
+  gulp.watch(['app/assets/sass/**/*.scss', 'app/modules/**/*.scss'], { interval: 500 }, ['sass']);
+  gulp.watch(['app/core/**/*.js', 'app/modules/**/*.js', 'app/core/**/*.json'], { interval: 500 }, reload);
+  gulp.watch(['app/core/**/*.html', 'app/modules/**/*.html'], { interval: 500 }, reload);
 });
