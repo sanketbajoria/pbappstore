@@ -36,13 +36,19 @@
       var _this = this;
       _this.data = {};
       _this.signup = function() {
-        delete _this.data.confirmPassword;
+        // delete angular.copy(_this.data.confirmPassword);
         AuthFactory.createUser(_this.data).then(function(user) {
-          if ($stateParams.refapp) {
+          // if ($stateParams.refapp) {
             AuthFactory.login({email: _this.data.email, password: _this.data.password}).then(function() {
-              $state.go('appDetail', {appId: $stateParams.refapp, req: $stateParams.req});
+              if ($stateParams.refapp) {
+                $state.go('appDetail', {appId: $stateParams.refapp, req: $stateParams.req});
+              } else {
+                $state.go('apps');
+              }
             });
-          }
+          // } else {
+
+          // }
         });
       }
 
