@@ -5,25 +5,33 @@
     angular.module('app').factory('AuthFactory', function ($http, AppConstant, $location) {
         var attemptedUrl = '';
         return {
-            login: function() {
-                
+            login: function (data) {
+                return $http.post(AppConstant.baseApi + '/login', data).then(function(res) {
+                    localStorage.setItem('session', true);
+                    localStorage.setItem('name', res.data.name);
+                    return res.data;
+                });
             },
 
-            logout: function() {
-
+            createUser: function(data) {
+                return $http.post(AppConstant.baseApi + '/users', data);
             },
 
-            saveAttemptedUrl: function(url) {
+            logout: function () {
+                localStorage.clear();
+            },
+
+            saveAttemptedUrl: function (url) {
                 attemptedUrl = url;
             },
 
-            redirectToAttemptedUrl: function() {
+            redirectToAttemptedUrl: function () {
                 if (attemptedUrl == '') {
                     return;
                 }
                 var url = attemptedUrl;
                 attemptedUrl = '';
-                
+
                 $location.path = url;
             }
         };

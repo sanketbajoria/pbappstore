@@ -26,7 +26,7 @@
     });
 
     $stateProvider.state('signup', {
-      url: '/signup',
+      url: '/signup?refapp&req',
       data: {
         pageTitle: 'Signup | PB App Store',
         bodyClass: 'signin'

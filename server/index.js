@@ -14,7 +14,8 @@ app.use(bodyParser.json());
 app.post('/api/v1/login', (req, res) => {
   try {
     db.getUser({ email: req.body.email }).then((user) => {
-      if (user.password === req.password) {
+      // console.log(user, user.password);
+      if (user != null && user.password === req.body.password) {
         res.status(200).json(user).end();
       } else {
         res.status(403).end();

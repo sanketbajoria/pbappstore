@@ -9,7 +9,7 @@
     'slickCarousel'
   ]);
 
-  app.constant('AppConstant', {'api_key': 'btfutlpsfbd13gxo9pnh5mm1lnap66', 'store_id': '8940', baseUrl: '/api/v2/8940'});
+  app.constant('AppConstant', {'api_key': 'btfutlpsfbd13gxo9pnh5mm1lnap66', 'store_id': '8940', baseUrl: '/api/v2/8940', baseApi: '/api/v1'});
   
   app.directive('onEnter', function () {
     return function (scope, element, attrs) {

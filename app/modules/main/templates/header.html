@@ -169,8 +169,11 @@
           </ul>
         </li>
  -->
+        <li class="menu-user" ng-show="!header.session">
+          <a ui-sref="signin">Sign in</a>
+        </li>
         <!-- User menu -->
-        <li class="dropdown menu-user">
+        <li class="dropdown menu-user" ng-show="header.session">
           <a href="" class="dropdown-toggle face" data-toggle="dropdown" aria-labelledby="username-offscreen" aria-expanded="false">
 
             <!-- user initials -->
@@ -187,12 +190,12 @@
 
             <!-- for the mobile menu only -->
             <span class="visible-xs-inline header-username-xs" id="username-offscreen">
-                <i class="nc-icon-mini users_circle-10"></i>Deepak Sharma
+                <i class="nc-icon-mini users_circle-10"></i>{{header.name}}
               </span>
 
             <!-- full name with notification number -->
             <span class="hidden-xs hidden-sm hidden-md">
-              <span class="header-username">Deepak Sharma</span>
+              <span class="header-username">{{header.name}}</span>
               <!-- <span class="header-notification">3</span> -->
             </span>
 
@@ -201,18 +204,8 @@
           <!-- user drop-menu -->
           <ul class="dropdown-menu" role="menu">
             <li>
-              <a href="">Profile<br>
-                  <span class="menu-text-small">Email, Passwords</span>
+              <a ng-click="header.logout()">Signout
                 </a>
-            </li>
-            <li>
-              <a href="">Your Account<br>
-                  <span class="menu-text-small">Financials, Usage, Products, Support</span>
-                </a>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-              <a href="">Sign Out</a>
             </li>
           </ul>
         </li>

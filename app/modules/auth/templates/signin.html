@@ -30,14 +30,14 @@
                                     <span translate="INVALID_EMAIL">Enter a valid email address.</span>
                                 </span>
                             </div>
-                            <div class="form-group" ng-class="{'has-error': myForm.pwd.$error.required && myForm.pwd.$dirty}">
-                                <label for="pwd">
+                            <div class="form-group" ng-class="{'has-error': myForm.password.$error.required && myForm.password.$dirty}">
+                                <label for="password">
                                     <span translate="PASSWORD_LABEL">Password</span>
                                 </label>
                                 <pbds-password-reveal link-show="Show" link-hide="Hide">
                                     <span class="password-reveal">
                                         
-                                            <input class="form-control" name="pwd" ng-model="signin.data.pwd"
+                                            <input class="form-control" name="password" ng-model="signin.data.password"
                                                 required="" type="password">
                                         
                                     
@@ -49,7 +49,7 @@
                                         </a>
                                     </span>
                                 </pbds-password-reveal>
-                                <span class="help-block" ng-show="myForm.pwd.$error.required && myForm.pwd.$dirty">
+                                <span class="help-block" ng-show="myForm.password.$dirty && signin.invalidPassword">
                                     <span translate="INVALID_PASSWORD">We don't recognize that email and password combination.</span>
                                 </span>
                             </div>
@@ -68,7 +68,7 @@
 
                         <p class="text-center">
                             <span translate="NOT_REGISTERED_LINK">Not a registered user?</span>
-                            <a href="" ng-click="gotoSignup()">
+                            <a ng-click="signin.gotoSignup(myForm.$valid)">
                                 <span translate="SIGN_UP_LINK">Sign up now</span>
                             </a>
                         </p>

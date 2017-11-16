@@ -11,10 +11,19 @@
             <form autocomplete="off" name="myForm" class="spacer-top-md" novalidate="" style=""></form>
             <div class="form-group" ng-class="{'has-error': myForm.name.$error.required  && myForm.name.$dirty}">
                 <label for="name">
+                    <span translate="EMAIL_LABEL">Name</span>
+                </label>
+                <input class="form-control" name="name" required="" type="text" ng-model="signup.data.name">
+                <span class="help-block" ng-show="myForm.name.$error.required && myForm.name.$dirty">
+                    <span translate="INVALID_EMAIL">Enter a name.</span>
+                </span>
+            </div>
+            <div class="form-group" ng-class="{'has-error': myForm.email.$error.required  && myForm.email.$dirty}">
+                <label for="name">
                     <span translate="EMAIL_LABEL">Email</span>
                 </label>
-                <input class="form-control" name="name" required="" type="text">
-                <span class="help-block" ng-show="myForm.name.$error.required && myForm.name.$dirty">
+                <input class="form-control" name="email" required="" type="text"  ng-model="signup.data.email"> 
+                <span class="help-block" ng-show="myForm.email.$error.required && myForm.email.$dirty">
                     <span translate="INVALID_EMAIL">Enter a valid email address.</span>
                 </span>
             </div>
@@ -25,8 +34,8 @@
                 <pbds-password-reveal link-show="Show" link-hide="Hide">
                     <span class="password-reveal">
 
-                        <input class="form-control" name="name" type="password" ng-init="signin.focus = false" ng-focus="signin.focus = !signin.focus"
-                            ng-blur="signin.focus = !signin.focus">
+                        <input class="form-control" name="password" type="password" ng-init="signup.focus = false" ng-focus="signup.focus = !signup.focus"
+                            ng-blur="signup.focus = !signup.focus"  ng-model="signup.data.password">
                         <a class="small" href="" ng-click="ctrl.click()">
                             <!---->
                             <span ng-if="!ctrl.isHidden" class="" style="">Show</span>
@@ -43,8 +52,8 @@
                 <pbds-password-reveal link-show="Show" link-hide="Hide">
                     <span class="password-reveal">
                         
-                            <input class="form-control" name="name" type="password" ng-init="signin.focus = false" ng-focus="signin.focus = !signin.focus"
-                                ng-blur="signin.focus = !signin.focus">
+                            <input class="form-control" name="name" type="password" ng-init="signup.focus = false" ng-focus="signup.focus = !signup.focus"
+                                ng-blur="signup.focus = !signup.focus"  ng-model="signup.data.confirmPassword">
                         <a class="small" href="" ng-click="ctrl.click()">
                             <!---->
                             <span ng-if="!ctrl.isHidden">Show</span>
@@ -54,13 +63,13 @@
                     </span>
                 </pbds-password-reveal>
             </div>
-            <div uib-collapse="!signin.focus" class="collapse" style="height: 0px;">
+            <div uib-collapse="!signup.focus" class="collapse" style="height: 0px;">
                 <div class="alert alert-info">
                     <span translate="YOUR_PASSWORD_MUST_BE">Your password must be at least 8 characters long and contain an uppercase letter plus at least one digit
                         or special character.</span>
                 </div>
             </div>
-            <button class="btn btn-primary btn-block btn-lg" type="submit">
+            <button class="btn btn-primary btn-block btn-lg" ng-click="signup.signup()" type="submit">
                 <span translate="COMPLETE_MY_REGISTRATION">Complete My Registration</span>
             </button>
             </form>

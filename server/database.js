@@ -33,10 +33,9 @@ module.exports = {
         });
     },
     getUser: function (email) {
+        console.log(email);
         return User.findOne({
-            where: {
-                email: email
-            }
+            where: email
         });
     }
 };
