@@ -56,4 +56,4 @@ app.post('/api/v1/users', (req, res, next) => {
   }
 });
 
-app.listen(80, () => console.log('Example app listening on port 80!'))
+app.listen(8080, () => console.log('Example app listening on port 80!'))
